@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./Header.css";
 
 export default function Header() {
   const [activeHash, setActiveHash] = useState(window.location.hash);
@@ -33,7 +34,7 @@ export default function Header() {
   }
 
   return (
-    <>
+    <div className="header-container">
       <div
         className={`p-5 flex justify-between items-center fixed top-0 w-full z-1000 transition duration-200 ease-in-out ${
           isTop ? "bg-transparent" : "bg-white"
@@ -42,7 +43,20 @@ export default function Header() {
         <a href="#home" className="hidden md:block">
           <img
             src="public/Assets/reso-logo/resonance0.svg"
-            className={`w-10 h-10 absolute left-8 top-1/2 transform -translate-y-1/2 transition duration-200 ease-in-out ${
+            className={`w-8 h-8 absolute left-8 top-1/2 transform -translate-y-1/2 transition duration-200 ease-in-out ${
+              isTop ? "" : "invert"
+            }`}
+          />
+        </a>
+
+        <a
+          href="https://discord.gg/dx59SQDgBR"
+          target="_blank"
+          className="hidden md:block"
+        >
+          <img
+            src="public/Assets/social-icons/discord.svg"
+            className={`w-10 h-10 absolute right-8 top-1/2 transform -translate-y-1/2 transition duration-200 ease-in-out ${
               isTop ? "" : "invert"
             }`}
           />
@@ -75,6 +89,6 @@ export default function Header() {
           </a>
         </div>
       </div>
-    </>
+    </div>
   );
 }

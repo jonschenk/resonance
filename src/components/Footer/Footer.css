@@ -1,0 +1,14 @@
+.footer-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 767px){
+    .footer-container {
+        font-size: 9px;
+    }
+}

@@ -1,6 +1,6 @@
 import About from "./components/About/About";
 import Artists from "./components/Artists/Artists";
-import Divider from "./components/Divider/Divider";
+import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Title from "./components/Title/Title";
 
@@ -12,9 +12,10 @@ function App() {
       <Router>
         <Header />
         <Title />
-        <Divider size="large" />
         <Artists />
         <About />
+        {/* <Submit /> */}
+        <Footer />
       </Router>
     </>
   );

@@ -1,5 +1,7 @@
+import Divider from "../Divider/Divider";
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Title.css";
 
 export default function Title() {
   const navigate = useNavigate();
@@ -26,12 +28,13 @@ export default function Title() {
     };
   }, [navigate]);
   return (
-    <div className="h-screen" id="home" ref={sectionRef}>
-      <div className="flex flex-col justify-center items-center h-full">
-        <h1 style={{ fontSize: "10rem" }} className="font-bold tracking-widest">
-          RESONANCE
-        </h1>
+    <>
+      <div className="h-screen" id="home" ref={sectionRef}>
+        <div className="flex flex-col justify-center items-center h-full">
+          <h1 className="font-bold tracking-widest ">RESONANCE</h1>
+        </div>
       </div>
-    </div>
+      <Divider />
+    </>
   );
 }

@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Artists.css";
 
 export default function Artists() {
   const navigate = useNavigate();
@@ -26,5 +27,17 @@ export default function Artists() {
     };
   }, [navigate]);
 
-  return <div className="h-screen" id="artists" ref={sectionRef}></div>;
+  return (
+    <>
+      <div className="h-screen" id="artists" ref={sectionRef}>
+        <div className="artists-title">
+          <h1 className="flex justify-center font-bold tracking-widest">
+            MEET THE ARTISTS
+          </h1>
+        </div>
+
+        <div className="artists-showcase"></div>
+      </div>
+    </>
+  );
 }
