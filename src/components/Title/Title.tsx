@@ -28,7 +28,9 @@ export default function Title() {
   return (
     <div className="h-screen" id="home" ref={sectionRef}>
       <div className="flex flex-col justify-center items-center h-full">
-        <h1 className="text-9xl font-bold tracking-widest">RESONANCE</h1>
+        <h1 style={{ fontSize: "10rem" }} className="font-bold tracking-widest">
+          RESONANCE
+        </h1>
       </div>
     </div>
   );

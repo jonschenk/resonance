@@ -28,23 +28,29 @@ export default function Header() {
     };
   }, []);
 
+  if (isTop) {
+    window.location.hash = "home";
+  }
+
   return (
     <>
       <div
-        className={`p-3.5 flex justify-between items-center fixed top-0 w-full z-1000 transition-colors duration-200 ease-in-out ${
+        className={`p-5 flex justify-between items-center fixed top-0 w-full z-1000 transition duration-200 ease-in-out ${
           isTop ? "bg-transparent" : "bg-white"
         }`}
       >
-        <a href="#home">
+        <a href="#home" className="hidden md:block">
           <img
-            src="https://www.logolynx.com/images/logolynx/4b/4b9d3c5c3f1b1f0e2e4d9b0b4b6a3c6b.png"
-            className="ml-4 hidden sm:block absolute left-4 top-1/2 transform -translate-y-1/2"
+            src="public/Assets/reso-logo/resonance0.svg"
+            className={`w-10 h-10 absolute left-8 top-1/2 transform -translate-y-1/2 transition duration-200 ease-in-out ${
+              isTop ? "" : "invert"
+            }`}
           />
         </a>
 
         <div className="flex-1 flex justify-center space-x-24 text-white font-inter font-bold">
           <a
-            className={`transition-colors duration-200 ease-in-out hover:text-resoPink ${
+            className={`text-lg transition-colors duration-600 ease-in-out hover:text-resoPink ${
               isTop ? "" : "text-black hover:text-resoPink"
             } ${activeHash === "#artists" ? "border-b-2 border-resoPink" : ""}`}
             href="#artists"
@@ -52,7 +58,7 @@ export default function Header() {
             Artists
           </a>
           <a
-            className={`transition-colors duration-200 ease-in-out hover:text-resoPink  ${
+            className={`text-lg transition-colors duration-600 ease-in-out hover:text-resoPink  ${
               isTop ? "" : "text-black hover:text-resoPink"
             } ${activeHash === "#about" ? "border-b-2 border-resoPink" : ""}`}
             href="#about"
@@ -60,7 +66,7 @@ export default function Header() {
             About
           </a>
           <a
-            className={`transition-colors duration-200 ease-in-out hover:text-resoPink  ${
+            className={`text-lg transition-colors duration-600 ease-in-out hover:text-resoPink  ${
               isTop ? "" : "text-black hover:text-resoPink"
             } ${activeHash === "#submit" ? "border-b-2 border-resoPink" : ""}`}
             href="#submit"
