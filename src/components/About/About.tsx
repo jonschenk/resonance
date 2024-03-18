@@ -1,7 +1,11 @@
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function About() {
+interface AboutProps {
+  className?: string;
+}
+
+export const About: React.FC<AboutProps> = ({ className }) => {
   const navigate = useNavigate();
   const sectionRef = useRef(null);
 
@@ -25,5 +29,9 @@ export default function About() {
       }
     };
   }, [navigate]);
-  return <div className="h-screen" id="about" ref={sectionRef}></div>;
-}
+  return (
+    <div className={className}>
+      <div className="h-screen" id="about" ref={sectionRef}></div>
+    </div>
+  );
+};

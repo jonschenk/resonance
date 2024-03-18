@@ -1,13 +1,12 @@
-import Divider from "../Divider/Divider";
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Title.css";
+import "./Submit.css";
 
-interface TitleProps {
+interface SubmitProps {
   className?: string;
 }
 
-export const Title: React.FC<TitleProps> = ({ className }) => {
+export const Submit: React.FC<SubmitProps> = ({ className }) => {
   const navigate = useNavigate();
   const sectionRef = useRef(null);
 
@@ -15,7 +14,7 @@ export const Title: React.FC<TitleProps> = ({ className }) => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          window.location.hash = "home";
+          window.location.hash = "submit";
         }
       },
       { threshold: 0.1 }
@@ -31,14 +30,12 @@ export const Title: React.FC<TitleProps> = ({ className }) => {
       }
     };
   }, [navigate]);
+
   return (
     <div className={className}>
-      <div className="h-screen" id="home" ref={sectionRef}>
-        <div className="flex flex-col justify-center items-center h-full">
-          <h1 className="font-bold tracking-widest ">RESONANCE</h1>
-        </div>
+      <div className="h-screen" id="submit" ref={sectionRef}>
+        <div className="submission-container"></div>
       </div>
-      <Divider />
     </div>
   );
 };
