@@ -1,0 +1,45 @@
+hr.divider-large {
+    height: 10px;
+    opacity: 1;
+    width: 50%;
+    border-radius: 15px;
+    margin: auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border: none;
+    background: white;
+}
+
+hr.divider-small {
+    height: 10px;
+    opacity: 1;
+    width: 15%;
+    border-radius: 15px;
+    margin: auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border: none;
+    background: white;
+}
+
+hr.divider-micro {
+    height: 10px;
+    opacity: 1;
+    width: 5%;
+    border-radius: 15px;
+    margin: auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border: none;
+    background: white;
+}
+
+@media (max-width: 960px) {
+    hr.divider-micro {
+        width: 50%;
+    }
+
+    hr.divider-small {
+        width: 50%;
+    }
+}
