@@ -1,3 +1,8 @@
+.header-container {
+  position: relative;
+  z-index: 1000;
+}
+
 @media (max-width: 767px) {
     .header-container .text-lg {
         font-size: 14px;

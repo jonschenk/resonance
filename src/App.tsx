@@ -13,11 +13,10 @@ function App() {
     <>
       <Router>
         <Header />
-        <Title className="snap-start" />
-        <Artists className="snap-start" />
-
-        <About className="snap-start" />
-        <Submit className="snap-start" />
+        <Title />
+        <Artists />
+        <About />
+        <Submit />
         <Footer />
       </Router>
     </>

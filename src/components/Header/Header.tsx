@@ -2,6 +2,11 @@ import { useState, useEffect } from "react";
 import "./Header.css";
 
 export default function Header() {
+  const handleHomeClick = (event: React.MouseEvent) => {
+    event.preventDefault();
+    window.scrollTo(0, 0);
+  };
+
   const [activeHash, setActiveHash] = useState(window.location.hash);
   const [isTop, setIsTop] = useState(true);
 
@@ -34,15 +39,15 @@ export default function Header() {
   }
 
   return (
-    <div className="header-container">
+    <div className="header-container h-4">
       <div
         className={`p-5 flex justify-between items-center fixed top-0 w-full z-1000 transition duration-200 ease-in-out ${
           isTop ? "bg-transparent" : "bg-white"
         }`}
       >
-        <a href="#home" className="hidden md:block">
+        <a href="#home" className="hidden md:block" onClick={handleHomeClick}>
           <img
-            src="public/Assets/reso-logo/resonance0.svg"
+            src="/Assets/reso-logo/resonance0.svg"
             className={`w-8 h-8 absolute left-8 top-1/2 transform -translate-y-1/2 transition duration-200 ease-in-out ${
               isTop ? "" : "invert"
             }`}
@@ -55,7 +60,7 @@ export default function Header() {
           className="hidden md:block"
         >
           <img
-            src="public/Assets/social-icons/discord.svg"
+            src="/Assets/social-icons/discord.svg"
             className={`w-10 h-10 absolute right-8 top-1/2 transform -translate-y-1/2 transition duration-200 ease-in-out ${
               isTop ? "" : "invert"
             }`}
