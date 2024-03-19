@@ -1,3 +1,5 @@
+import "./ArtistItem.css";
+
 interface ArtistItemProps {
   image: string;
   spotifyLink: string;
@@ -18,8 +20,8 @@ export const ArtistItem: React.FC<ArtistItemProps> = ({
   social1icon,
 }) => {
   return (
-    <div className="artist-item-container bg-white mt-20 rounded-lg transform transition duration-500 ease-in-out hover:-translate-y-7">
-      <div className="flex flex-col items-center">
+    <div className="art-item-container bg-white mt-20 rounded-lg transform transition duration-500 ease-in-out hover:-translate-y-7">
+      <div className="art-item-subcontainer flex flex-col items-center">
         <a href={spotifyLink} target="_blank">
           <img
             src={image}

@@ -37,7 +37,7 @@ export const Artists: React.FC<ArtistsProps> = ({ className }) => {
     <div className={className}>
       <div id="artists" ref={sectionRef}>
         <div className="artists-title">
-          <h1 className="flex justify-center font-bold tracking-widest ">
+          <h1 className="flex justify-center font-bold tracking-widest">
             MEET THE ARTISTS
           </h1>
         </div>
