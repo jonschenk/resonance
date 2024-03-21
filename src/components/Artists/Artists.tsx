@@ -43,7 +43,7 @@ export const Artists: React.FC<ArtistsProps> = ({ className }) => {
         </div>
 
         <div className="artists-showcase">
-          <div className="grid grid-cols-3 gap-4 justify-items-center">
+          <div className="grid grid-cols-3 justify-items-center" id="grid">
             <ArtistItem
               image="/Assets/artist-icons/mikkerj.png"
               spotifyLink="https://open.spotify.com/artist/3fkKWMJaSy1s1Oqtmi93WV?si=reM2df80RUSOvNYnkxRBBQ"

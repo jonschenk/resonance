@@ -1,5 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+
 import "./Submit.css";
 
 interface SubmitProps {
@@ -34,7 +35,9 @@ export const Submit: React.FC<SubmitProps> = ({ className }) => {
   return (
     <div className={className}>
       <div className="h-screen" id="submit" ref={sectionRef}>
-        <div className="submission-container"></div>
+        <div className="submission-container">
+          <input type="file" accept=".mp3"></input>
+        </div>
       </div>
     </div>
   );
