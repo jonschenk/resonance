@@ -7,6 +7,18 @@ export default function Header() {
     window.scrollTo(0, 0);
   };
 
+  const handleLinkClick = (id: string) => (event: React.MouseEvent) => {
+    event.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      const position = element.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: position,
+        behavior: "smooth",
+      });
+    }
+  };
+
   const [activeHash, setActiveHash] = useState(window.location.hash);
   const [isTop, setIsTop] = useState(true);
 
@@ -73,6 +85,7 @@ export default function Header() {
               isTop ? "" : "text-black hover:text-resoPink"
             } ${activeHash === "#artists" ? "border-b-2 border-resoPink" : ""}`}
             href="#artists"
+            onClick={handleLinkClick("artists")}
           >
             Artists
           </a>
@@ -81,6 +94,7 @@ export default function Header() {
               isTop ? "" : "text-black hover:text-resoPink"
             } ${activeHash === "#about" ? "border-b-2 border-resoPink" : ""}`}
             href="#about"
+            onClick={handleLinkClick("about")}
           >
             About
           </a>
@@ -89,6 +103,7 @@ export default function Header() {
               isTop ? "" : "text-black hover:text-resoPink"
             } ${activeHash === "#submit" ? "border-b-2 border-resoPink" : ""}`}
             href="#submit"
+            onClick={handleLinkClick("submit")}
           >
             Submit
           </a>
