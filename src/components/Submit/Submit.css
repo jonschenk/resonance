@@ -1,0 +1,31 @@
+.submit-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    width: 58%;
+}
+
+.submit-container h1 {
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+.submit-container p {
+    font-size: 1.25rem;
+    margin-top: 20px;
+}
+
+.submit-container p span {
+    font-size: 1rem;
+    font-style: italic;
+}
+
+@media screen and (max-width: 767px) {
+    .submit-container {
+        margin-top: 50px;
+        width: 90%;
+    }
+    
+}

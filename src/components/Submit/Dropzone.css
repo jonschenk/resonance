@@ -1,0 +1,11 @@
+
+
+#dropzone-box {
+    width: 800px;
+}
+
+@media screen and (max-width: 767px){
+    #dropzone-box {
+        width: 350px;
+    }
+}
