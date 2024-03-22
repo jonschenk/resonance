@@ -42,17 +42,13 @@ export const About: React.FC<AboutProps> = ({ className }) => {
             <h1 className="text-3xl font-bold text-center mb-14">ABOUT US</h1>
             <div className="about-desc">
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
-                dolor, cum sit accusantium, officiis culpa, excepturi ex magnam
-                rerum quisquam voluptatum sunt est hic officia? Excepturi cumque
-                dolore qui distinctio. Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Facere dolor, cum sit accusantium, officiis
-                culpa, excepturi ex magnam rerum quisquam voluptatum sunt est
-                hic officia? Excepturi cumque dolore qui distinctio. Lorem ipsum
-                dolor sit amet consectetur adipisicing elit. Facere dolor, cum
-                sit accusantium, officiis culpa, excepturi ex magnam rerum
-                quisquam voluptatum sunt est hic officia? Excepturi cumque
-                dolore qui distinctio.
+                Resonance was started by a group of friends who wanted to create
+                and talk about music. We are a collective of artists, producers,
+                and music enthusiasts who want to share our passion with the
+                world. We are not a label, we are a community. We are not a
+                business, we are a family. We are not a brand, we are a group of
+                friends who love music. We are Resonance. Join our Discord to be
+                a part of the community.{" "}
               </p>
               <div className="button-disc">
                 <a href="https://discord.gg/dx59SQDgBR" download>

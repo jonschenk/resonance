@@ -42,7 +42,7 @@ export const Submit: React.FC<SubmitProps> = ({ className }) => {
         </h1>
         <p className="text-center mb-10">
           We are a music collective, if we like what you have, you might be
-          given permission to use the Resonance brand on your track.{" "}
+          given permission to use the Resonance name on your track.{" "}
           <span>
             <br />
             <br />
