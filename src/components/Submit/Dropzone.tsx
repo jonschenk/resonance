@@ -8,14 +8,14 @@ import "./Dropzone.css";
 //TODO none of this works so fix it
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDmjz9sftjDxlReMilBtxg8YVpCZbDF_JA",
-  authDomain: "resonance-76fca.firebaseapp.com",
-  databaseURL: "https://resonance-76fca-default-rtdb.firebaseio.com",
-  projectId: "resonance-76fca",
-  storageBucket: "resonance-76fca.appspot.com",
-  messagingSenderId: "709152611059",
-  appId: "1:709152611059:web:c1c12e6fbe9249855cb586",
-  measurementId: "G-RP9R0GRM00",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
