@@ -1,72 +1,62 @@
 import React, { useState } from "react";
 import { useDropzone } from "react-dropzone";
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
-import { getStorage, ref, uploadBytes } from "firebase/storage";
+import { storage } from "./firebase";
+import { ref, uploadBytes } from "firebase/storage";
+import { collection, addDoc, getFirestore } from "firebase/firestore";
 import "./Dropzone.css";
-
-//TODO none of this works so fix it
-
-const firebaseConfig = {
-  apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-  databaseURL: process.env.REACT_APP_DATABASE_URL,
-  projectId: process.env.REACT_APP_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_APP_ID,
-  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const storage = getStorage(app);
 
 const Dropzone = () => {
   const maxSize = 20 * 1024 * 1024;
   const [files, setFiles] = useState<File[]>([]);
-  const [email, setEmail] = useState("");
+  // const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [selectedFileName, setSelectedFileName] = useState("");
 
-  const onDrop = React.useCallback((acceptedFiles: File[]) => {
+  const onDrop = (acceptedFiles: File[]) => {
     setFiles(acceptedFiles);
-  }, []);
-
-  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
+    setSelectedFileName(acceptedFiles[0]?.name || "");
   };
+
+  // const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setEmail(event.target.value);
+  // };
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setSubmitting(true);
 
-    if (files.length > 0 && files[0].size > maxSize) {
-      alert("File is too large. Maximum file size is 20MB.");
-    } else {
-      const file = files[0];
-      const uploadTask = uploadBytes(
-        ref(storage, `uploads/${file.name}`),
-        file
-      );
-
-      uploadTask
-        .then(() => {
-          return addDoc(collection(db, "uploads"), {
-            email: email,
-            fileName: file.name,
-          });
-        })
-        .then(() => {
-          setFiles([]);
-          setEmail("");
-          setSubmitting(false);
-        })
-        .catch((error) => {
-          console.error("Error adding document: ", error);
-          setSubmitting(false);
-        });
+    if (files.length === 0) {
+      alert("Please add a file before submitting.");
+      setSubmitting(false);
+      return;
     }
+
+    if (files[0].size > maxSize) {
+      alert("File is too large. Maximum file size is 20MB.");
+      setSubmitting(false);
+      return;
+    }
+
+    const file = files[0];
+    const uploadTask = uploadBytes(ref(storage, `uploads/${file.name}`), file);
+
+    uploadTask
+      .then(() => {
+        return addDoc(collection(getFirestore(), "uploads"), {
+          // email: email,
+          fileName: file.name,
+        });
+      })
+      .then(() => {
+        alert("File submitted successfully!");
+        setFiles([]);
+        // setEmail("");
+        setSubmitting(false);
+      })
+      .catch((error) => {
+        console.error("Error adding document: ", error);
+        setSubmitting(false);
+      });
   };
 
   const { getRootProps, getInputProps } = useDropzone({
@@ -113,9 +103,10 @@ const Dropzone = () => {
               alt="upload icon"
             />
             <p>.mp3 files only (max size 20MB)</p>
+            {selectedFileName && <p>Selected file: {selectedFileName}</p>}
           </div>
         </div>
-        <input
+        {/* <input
           type="text"
           placeholder="email"
           className=" block mx-auto mt-10"
@@ -132,7 +123,7 @@ const Dropzone = () => {
             width: "200px",
             color: "#000",
           }}
-        />
+        /> */}
         <button
           type="submit"
           disabled={submitting}
