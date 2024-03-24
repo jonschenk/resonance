@@ -8,7 +8,7 @@ import "./Dropzone.css";
 const Dropzone = () => {
   const maxSize = 20 * 1024 * 1024;
   const [files, setFiles] = useState<File[]>([]);
-  // const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [selectedFileName, setSelectedFileName] = useState("");
 
@@ -17,9 +17,9 @@ const Dropzone = () => {
     setSelectedFileName(acceptedFiles[0]?.name || "");
   };
 
-  // const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setEmail(event.target.value);
-  // };
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
+  };
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -38,19 +38,25 @@ const Dropzone = () => {
     }
 
     const file = files[0];
-    const uploadTask = uploadBytes(ref(storage, `uploads/${file.name}`), file);
+    const uploadTask = uploadBytes(
+      ref(storage, `uploads/${email}/${file.name}`),
+      file
+    );
+
+    window.alert("Demo successfully submitted");
 
     uploadTask
       .then(() => {
         return addDoc(collection(getFirestore(), "uploads"), {
-          // email: email,
+          email: email,
           fileName: file.name,
         });
       })
       .then(() => {
-        alert("File submitted successfully!");
         setFiles([]);
-        // setEmail("");
+        setSelectedFileName("");
+        setSubmitting(false);
+        setEmail("");
         setSubmitting(false);
       })
       .catch((error) => {
@@ -106,7 +112,7 @@ const Dropzone = () => {
             {selectedFileName && <p>Selected file: {selectedFileName}</p>}
           </div>
         </div>
-        {/* <input
+        <input
           type="text"
           placeholder="email"
           className=" block mx-auto mt-10"
@@ -123,7 +129,7 @@ const Dropzone = () => {
             width: "200px",
             color: "#000",
           }}
-        /> */}
+        />
         <button
           type="submit"
           disabled={submitting}
@@ -146,6 +152,7 @@ const Dropzone = () => {
             cursor: "pointer",
             transition: "0.5s",
           }}
+          hidden={submitting}
         >
           SUBMIT DEMO
         </button>
